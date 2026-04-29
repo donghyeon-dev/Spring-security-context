@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: order-service
+
+server:
+  port: 8082
+
+app:
+  inventory:
+    url: http://localhost:8083
+  security:
+    mode: ${SECURITY_MODE:jwt}
+    jwt:
+      issuer: auth-service
+      secret: demo-jwt-secret-please-change-in-production-32+chars
+    passport:
+      issuer: gateway-service
+      secret: demo-passport-secret-please-change-internal-only-32+chars
+      header-name: X-Passport
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  tracing:
+    sampling:
+      probability: 1.0
+  otlp:
+    tracing:
+      endpoint: http://localhost:4318/v1/traces
+
+logging:
+  level:
+    com.example.securitycontext: DEBUG

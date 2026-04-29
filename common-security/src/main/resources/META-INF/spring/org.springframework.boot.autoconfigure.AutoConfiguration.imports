@@ -1,0 +1,2 @@
+com.example.securitycontext.common.autoconfigure.CommonSecurityAutoConfiguration
+com.example.securitycontext.common.async.SecurityAwareTaskExecutorConfig
